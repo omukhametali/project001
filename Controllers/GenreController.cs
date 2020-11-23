@@ -10,11 +10,11 @@ using project001.Data;
 
 namespace project001.Controllers
 {
-    public class CategoriesController : Controller
+    public class GenreController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CategoriesController(ApplicationDbContext context)
+        public GenreController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace project001.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Category.ToListAsync());
+            return View(await _context.Genre.ToListAsync());
         }
 
         // GET: Categories/Details/5
@@ -33,14 +33,14 @@ namespace project001.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category
+            var genre = await _context.Genre
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
+            if (genre == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return View(genre);
         }
 
         // GET: Categories/Create
@@ -54,15 +54,15 @@ namespace project001.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Category category)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Genre genre)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(category);
+                _context.Add(genre);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            return View(genre);
         }
 
         // GET: Categories/Edit/5
@@ -73,12 +73,12 @@ namespace project001.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category.FindAsync(id);
-            if (category == null)
+            var genre = await _context.Genre.FindAsync(id);
+            if (genre == null)
             {
                 return NotFound();
             }
-            return View(category);
+            return View(genre);
         }
 
         // POST: Categories/Edit/5
@@ -86,9 +86,9 @@ namespace project001.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name")] Category category)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name")] Genre genre)
         {
-            if (id != category.Id)
+            if (id != genre.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace project001.Controllers
             {
                 try
                 {
-                    _context.Update(category);
+                    _context.Update(genre);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoryExists(category.Id))
+                    if (!GenreExists(genre.Id))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace project001.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            return View(genre);
         }
 
         // GET: Categories/Delete/5
@@ -124,14 +124,14 @@ namespace project001.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category
+            var genre = await _context.Genre
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
+            if (genre == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return View(genre);
         }
 
         // POST: Categories/Delete/5
@@ -139,15 +139,15 @@ namespace project001.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var category = await _context.Category.FindAsync(id);
-            _context.Category.Remove(category);
+            var genre = await _context.Genre.FindAsync(id);
+            _context.Genre.Remove(genre);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CategoryExists(string id)
+        private bool GenreExists(string id)
         {
-            return _context.Category.Any(e => e.Id == id);
+            return _context.Genre.Any(e => e.Id == id);
         }
     }
 }

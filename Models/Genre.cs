@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace project001.Models
 {
-    public class Category
+    public class Genre
     {
 
         public string Id { get; set; }

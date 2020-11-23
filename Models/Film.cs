@@ -10,10 +10,12 @@ namespace project001.Models
 
         public string Id { get; set; }
         public string Name { get; set; }
-        public Category Category { get; set; }
+        public Genre Genre { get; set; }
         public Features Features { get; set; }
         public double Duration { get; set; }
         public string Image { get; set; }
+        public int Year { get; set; }
+        public string Director { get; set; }
 
     }
 }

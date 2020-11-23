@@ -13,9 +13,9 @@ namespace project001.Data
         {
         }
         public DbSet<project001.Models.Cart> Cart { get; set; }
-        public DbSet<project001.Models.Category> Category { get; set; }
+        public DbSet<project001.Models.Genre> Genre { get; set; }
         public DbSet<project001.Models.Comments> Comments { get; set; }
         public DbSet<project001.Models.Features> Features { get; set; }
-        public DbSet<project001.Models.Film> Item { get; set; }
+        public DbSet<project001.Models.Film> Film { get; set; }
     }
 }
