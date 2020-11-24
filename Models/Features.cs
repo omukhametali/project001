@@ -10,8 +10,8 @@ namespace project001.Models
         public string Id { get; set; }
         public string Description { get; set; }
         public string Size { get; set; }
-        public string Color { get; set; }
-        public string Production_Country { get; set; }
+        public string Quality { get; set; }
+        public string Actors { get; set; }
         public string Country { get; set; }
 
     }
